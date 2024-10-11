@@ -1,0 +1,2 @@
+format:
+	prettier .\src --write
