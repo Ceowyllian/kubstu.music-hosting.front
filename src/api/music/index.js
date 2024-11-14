@@ -1,18 +1,8 @@
-export {
-  trackList,
-  trackCreate,
-  trackRetrieve,
-  trackUpdate,
-  trackDelete,
-  trackLikeCreate,
-  trackLikeDelete,
-} from './track';
+export { trackList, trackCreate, trackRetrieve, trackUpdate, trackDelete } from './track';
 
 export {
   playlistCreate,
   playlistDelete,
-  playlistLikeCreate,
-  playlistLikeDelete,
   playlistList,
   playlistRetrieve,
   playlistUpdate,
@@ -25,8 +15,6 @@ export {
 export {
   albumCreate,
   albumDelete,
-  albumLikeCreate,
-  albumLikeDelete,
   albumList,
   albumRetrieve,
   albumUpdate,

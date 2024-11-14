@@ -27,14 +27,6 @@ export async function playlistDelete(id) {
   return await axios.delete(`api/music/playlists/${id}/`);
 }
 
-export async function playlistLikeCreate(id) {
-  return await axios.post(`api/music/playlists/${id}/like/`);
-}
-
-export async function playlistLikeDelete(id) {
-  return await axios.delete(`api/music/playlist/${id}/like/`);
-}
-
 export async function playlistTrackList(id) {
   return await collectionTrackList('playlist', id);
 }
