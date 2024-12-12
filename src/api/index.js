@@ -9,4 +9,13 @@ const axios = axiosInstance.create({
   },
 });
 
+export function setAuthToken({ data }) {
+  const auth_token = data.auth_token;
+  axios.defaults.headers.common['Authorization'] = `Token ${auth_token}`;
+}
+
+export function removeAuthToken() {
+  delete axios.defaults.headers.common['Authorization'];
+}
+
 export default axios;
