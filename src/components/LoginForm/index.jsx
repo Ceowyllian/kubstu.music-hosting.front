@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
 import { login } from '../../api/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { setAuthToken } from '../../api';
 
 function LoginForm() {
@@ -64,6 +64,7 @@ function LoginForm() {
           <span className={'bi-arrow-up'} />
           Sign-in
         </Button>
+        <Card.Text>Or <Link to={"/registration"}>create</Link> new account</Card.Text>
       </Card.Footer>
     </Card>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
 import { createUser } from '../../api/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {
   const [username, setUsername] = useState(null);
@@ -90,6 +90,7 @@ function RegistrationForm() {
           <span className={'bi-person-plus-fill me-2'} />
           Sign-up
         </Button>
+        <Card.Text><Link to={"/login"}>Log in</Link> to an existing account</Card.Text>
       </Card.Footer>
     </Card>
   );
