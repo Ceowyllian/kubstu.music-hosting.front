@@ -2,16 +2,20 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { BaseLayout, EmptyLayout } from '../layout';
-import { AUTH, HOME } from './routes';
-import { Auth, Home } from './pages';
+import { HOME, LOGIN, REGISTRATION } from './routes';
+import { Home, Login, Registration } from './pages';
 
 const routes = [
   {
     element: <EmptyLayout />,
     children: [
       {
-        path: AUTH,
-        element: <Auth />,
+        path: LOGIN,
+        element: <Login />,
+      },
+      {
+        path: REGISTRATION,
+        element: <Registration />,
       },
     ],
   },
