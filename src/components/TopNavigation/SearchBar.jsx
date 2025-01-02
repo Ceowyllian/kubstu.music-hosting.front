@@ -6,7 +6,11 @@ export default function SearchBar() {
   return (
     <Form>
       <InputGroup>
-        <Form.Control className={'border-black d-inline'} type={'input'} placeholder={'Search...'} />
+        <Form.Control
+          className={'border-black d-inline'}
+          type={'input'}
+          placeholder={'Search...'}
+        />
         <Button as={NavLink} to={'/search'} className={'bi-search d-inline'} />
       </InputGroup>
     </Form>

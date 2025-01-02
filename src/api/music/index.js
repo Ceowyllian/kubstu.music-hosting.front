@@ -1,4 +1,10 @@
-export { trackList, trackCreate, trackRetrieve, trackUpdate, trackDelete } from './track';
+export {
+  trackList,
+  trackCreate,
+  trackRetrieve,
+  trackUpdate,
+  trackDelete,
+} from './track';
 
 export {
   playlistCreate,
