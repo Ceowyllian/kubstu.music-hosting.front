@@ -6,7 +6,7 @@ import UserBar from './UserBar';
 
 export default function TopNavigation() {
   return (
-    <Navbar className={'bg-secondary container-fluid'}>
+    <Navbar className={'bg-dark container-fluid p-1'} sticky={'top'}>
       {/*<Container fluid>*/}
       <HomeButton />
       <Col className={'ms-1'}>
