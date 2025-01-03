@@ -90,7 +90,9 @@ function RegistrationForm() {
           <span className={'bi-person-plus-fill me-2'} />
           Sign-up
         </Button>
-        <Card.Text><Link to={"/login"}>Log in</Link> to an existing account</Card.Text>
+        <Card.Text>
+          <Link to={'/login'}>Log in</Link> to an existing account
+        </Card.Text>
       </Card.Footer>
     </Card>
   );

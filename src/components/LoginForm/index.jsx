@@ -7,7 +7,7 @@ import { setAuthToken } from '../../api';
 function LoginForm() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [validated, setValidated] = useState(false);
+  const [loginFailed, setLoginFailed] = useState(false);
   const navigate = useNavigate();
 
   function emailInput(e) {
@@ -18,22 +18,14 @@ function LoginForm() {
     setPassword(e.target.value);
   }
 
-  async function loginFailed(e) {
-    // TODO add error handler
-    console.log(e);
-  }
-
-  function loginSubmit(e) {
-    const form = e.currentTarget;
-
-    setValidated(form.checkValidity());
-    if (!validated) {
-      e.preventDefault();
-      e.stopPropagation();
+  async function loginSubmit(e) {
+    try {
+      const response = await login(email, password);
+      setAuthToken(response);
+      navigate('/');
+    } catch {
+      setLoginFailed(true);
     }
-
-    login(email, password).then(setAuthToken).catch(loginFailed);
-    navigate('/');
   }
 
   return (
@@ -58,13 +50,18 @@ function LoginForm() {
             onChange={passwordInput}
           />
         </InputGroup>
+        <Form.Text className={loginFailed ? 'text-danger' : 'd-none'}>
+          Failed to log in using provided credentials
+        </Form.Text>
       </Form>
       <Card.Footer>
         <Button className={'w-100'} onClick={loginSubmit}>
           <span className={'bi-arrow-up'} />
           Sign-in
         </Button>
-        <Card.Text>Or <Link to={"/registration"}>create</Link> new account</Card.Text>
+        <Card.Text>
+          Or <Link to={'/registration'}>create</Link> new account
+        </Card.Text>
       </Card.Footer>
     </Card>
   );
