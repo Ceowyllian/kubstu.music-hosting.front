@@ -3,8 +3,8 @@ import { Button, Card, Form, InputGroup } from 'react-bootstrap';
 import { login } from '../../api/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { setAuthToken } from '../../api';
-import { useAuth } from "../../auth/context";
-import { meRetrieve } from "../../api/me";
+import { useAuth } from '../../auth/context';
+import { meRetrieve } from '../../api/me';
 
 function LoginForm() {
   const [email, setEmail] = useState(null);
@@ -28,10 +28,10 @@ function LoginForm() {
 
       const me = await meRetrieve();
       setUser({
-        "is_authenticated": true,
-        "username": me.data.username,
-        "avatar": me.data.avatar
-      })
+        is_authenticated: true,
+        username: me.data.username,
+        avatar: me.data.avatar,
+      });
 
       navigate('/');
     } catch {

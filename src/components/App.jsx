@@ -1,8 +1,7 @@
-import React from "react";
-import { RouterProvider } from "react-router-dom";
-import router from "../router";
-import { AuthProvider } from "../auth/context";
-
+import React from 'react';
+import { RouterProvider } from 'react-router-dom';
+import router from '../router';
+import { AuthProvider } from '../auth/context';
 
 export default function App() {
   return (
@@ -11,5 +10,5 @@ export default function App() {
         <RouterProvider router={router} />
       </AuthProvider>
     </React.StrictMode>
-  )
+  );
 }
