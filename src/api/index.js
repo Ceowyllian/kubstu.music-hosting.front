@@ -1,7 +1,7 @@
 import axiosInstance from 'axios';
 import { API_URL } from '../shared/constants';
 
-const axios = axiosInstance.create({
+export const axios = axiosInstance.create({
   baseURL: API_URL,
   withCredentials: true,
   headers: {
