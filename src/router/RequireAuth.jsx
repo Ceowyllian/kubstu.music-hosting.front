@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
-import { Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { isUserAuthenticated } from '../auth/';
 
-function RequireAuth({ children }) {
+function RequireAuth({ page }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,7 +12,7 @@ function RequireAuth({ children }) {
     }
   });
 
-  return <Outlet>{children}</Outlet>;
+  return page;
 }
 
 export default RequireAuth;
