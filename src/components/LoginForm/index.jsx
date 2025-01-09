@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
 import { login } from '../../api/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { setAuthToken } from '../../api';
-import { useAuth } from '../../auth/context';
 import { meRetrieve } from '../../api/me';
+import { setUser } from '../../auth/';
 
 function LoginForm() {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
   const [loginFailed, setLoginFailed] = useState(false);
   const navigate = useNavigate();
-  const { setUser } = useAuth();
 
   function emailInput(e) {
     setEmail(e.target.value);
@@ -23,15 +21,10 @@ function LoginForm() {
 
   async function loginSubmit(e) {
     try {
-      const authToken = await login(email, password);
-      setAuthToken(authToken);
+      await login(email, password);
 
       const me = await meRetrieve();
-      setUser({
-        is_authenticated: true,
-        username: me.data.username,
-        avatar: me.data.avatar,
-      });
+      setUser(me.data);
 
       navigate('/');
     } catch {
