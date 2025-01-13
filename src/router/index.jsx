@@ -2,8 +2,9 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { BaseLayout, EmptyLayout } from '../layout';
-import { HOME, LOGIN, REGISTRATION } from './routes';
-import { Home, Login, Registration } from './pages';
+import { HOME, LOGIN, PROFILE, REGISTRATION } from './routes';
+import { Home, Login, Profile, Registration } from './pages';
+import RequireAuth from './RequireAuth';
 
 const routes = [
   {
@@ -25,6 +26,10 @@ const routes = [
       {
         path: HOME,
         element: <Home />,
+      },
+      {
+        path: PROFILE,
+        element: <RequireAuth page={<Profile />} />,
       },
     ],
   },
