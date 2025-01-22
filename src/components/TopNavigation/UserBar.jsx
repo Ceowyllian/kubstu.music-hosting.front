@@ -16,7 +16,7 @@ export default function UserBar() {
 
   return isUserAuthenticated() ? (
     <>
-      <Button as={NavLink} to={'profile/'}>
+      <Button as={NavLink} to={'me/'}>
         <span className={'bi-person me-1'} />
         <span className={'d-none d-sm-inline'}>{user.username}</span>
       </Button>

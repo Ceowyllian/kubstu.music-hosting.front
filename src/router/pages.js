@@ -3,4 +3,4 @@ import { lazy } from 'react';
 export const Home = lazy(() => import('../pages/home'));
 export const Login = lazy(() => import('../pages/login'));
 export const Registration = lazy(() => import('../pages/registration'));
-export const Profile = lazy(() => import('../pages/profile'));
+export const Me = lazy(() => import('../pages/me'));
