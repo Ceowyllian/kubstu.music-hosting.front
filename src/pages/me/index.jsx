@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { PersonContentLinks, PersonForm } from 'components/person/';
 import PersonInformation from '../../components/person/PersonInformation';
+import PersonActionLinks from '../../components/person/PersonActionLinks';
 
 function Me() {
   const [editMode, setEditMode] = useState(false);
@@ -26,7 +27,12 @@ function Me() {
           </Button>
         </Col>
         <Col>
-          <PersonContentLinks />
+          <Row>
+            <PersonContentLinks />
+          </Row>
+          <Row>
+            <PersonActionLinks />
+          </Row>
         </Col>
       </Row>
     </Container>
