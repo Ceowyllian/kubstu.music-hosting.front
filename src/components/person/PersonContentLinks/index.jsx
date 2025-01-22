@@ -4,11 +4,11 @@ import PersonContentButton from './PersonContentButton';
 
 function PersonContentLinks() {
   const childrenProps = [
-    ['My tracks', 'my-tracks/', 'bi-music-note'],
-    ['My playlists', 'my-playlists/', 'bi-collection-play'],
-    ['My albums', 'my-albums/', 'bi-collection'],
-    ['My commentaries', 'my-commentaries/', 'bi-chat-right-text'],
-    ['My likes', 'my-likes/', 'bi-heart'],
+    ['My tracks', '/my-tracks/', 'bi-music-note'],
+    ['My playlists', '/my-playlists/', 'bi-collection-play'],
+    ['My albums', '/my-albums/', 'bi-collection'],
+    ['My commentaries', '/my-commentaries/', 'bi-chat-right-text'],
+    ['My likes', '/my-likes/', 'bi-heart'],
   ];
 
   return (
