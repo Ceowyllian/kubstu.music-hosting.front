@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
-import { getUser } from 'auth';
+import { getUser, setUser } from 'auth';
 import { meUpdate } from 'api/me';
 import AvatarForm from './AvatarForm';
 
@@ -10,7 +10,8 @@ function PersonForm({ onCancel }) {
   const [public_email, setPublicEmail] = useState('');
 
   async function handleSubmit(e) {
-    await meUpdate(summary, public_email);
+    const me = await meUpdate(summary, public_email);
+    setUser(me.data);
     window.location.reload();
   }
 
