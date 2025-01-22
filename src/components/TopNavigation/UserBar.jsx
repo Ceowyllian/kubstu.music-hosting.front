@@ -9,7 +9,7 @@ export default function UserBar() {
   const navigate = useNavigate();
 
   async function logoutSubmit() {
-    const response = await logout();
+    await logout();
     removeUser();
     navigate('/');
   }
