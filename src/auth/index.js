@@ -12,9 +12,12 @@ export function setUser({
   localStorage.setItem('person_id', id);
   localStorage.setItem('user_id', user_id);
   localStorage.setItem('username', username);
-  localStorage.setItem('avatar', avatar || '');
-  localStorage.setItem('summary', summary || '');
-  localStorage.setItem('public_email', public_email || '');
+  if (avatar) localStorage.setItem('avatar', avatar);
+  else localStorage.removeItem('avatar');
+  if (summary) localStorage.setItem('summary', summary);
+  else localStorage.removeItem('summary');
+  if (public_email) localStorage.setItem('public_email', public_email);
+  else localStorage.removeItem('public_email');
 }
 
 export function removeUser() {
