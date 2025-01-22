@@ -14,7 +14,6 @@ function MyContent() {
   return (
     <ListGroup>
       {childrenProps.map(([text, link, icon], i) => {
-        console.log(link);
         return (
           <ListGroup.Item key={i}>
             <MyContentButton link={link} icon={icon}>
