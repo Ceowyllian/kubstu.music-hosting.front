@@ -9,8 +9,11 @@ function AvatarForm() {
   const user = getUser();
   const [avatarSrc, setAvatarSrc] = useState(user.getAvatarSrc());
   const [inputIsSet, setInputIsSet] = useState(false);
+  const [uploadFailed, setUploadFailed] = useState(false);
+  const [uploadFailedText, setUploadFailedText] = useState('');
 
   function handleFileChange() {
+    setUploadFailed(false);
     setAvatarFile(input.current.files[0]);
     setAvatarSrc(URL.createObjectURL(input.current.files[0]));
     setInputIsSet(true);
@@ -20,13 +23,22 @@ function AvatarForm() {
     setInputIsSet(false);
     setAvatarSrc(user.getAvatarSrc());
     setAvatarFile(null);
+    setUploadFailedText('');
+    setUploadFailed(false);
     input.current.value = '';
   }
 
   async function handleSubmit() {
-    const me = await meSetAvatar(avatarFile, 'png');
-    setUser(me.data);
-    window.location.reload();
+    try {
+      const response = await meSetAvatar(avatarFile, '');
+      setUser(response.data);
+      window.location.reload();
+    } catch (e) {
+      setUploadFailedText(
+        e?.response?.data?.extra?.fields?.avatar[0] || 'Upload failed',
+      );
+      setUploadFailed(true);
+    }
   }
 
   async function handleRemoveAvatar() {
@@ -38,7 +50,8 @@ function AvatarForm() {
   return (
     <>
       <Figure>
-        <Figure.Image src={avatarSrc} />
+        <Figure.Image src={avatarSrc} alt={"Can't display the image"} />
+        {uploadFailed && <Figure.Caption>{uploadFailedText}</Figure.Caption>}
       </Figure>
       <div>
         {!inputIsSet && (
