@@ -3,3 +3,19 @@ import axios from '../index';
 export async function meRetrieve() {
   return await axios.get('api/me/');
 }
+
+export async function meUpdate(summary, public_email) {
+  return await axios.patch('api/me/', { summary, public_email });
+}
+
+export async function meRemoveAvatar() {
+  return await axios.patch('api/me/', { avatar: null });
+}
+
+export async function meSetAvatar(avatarFile, extension) {
+  const formData = new FormData();
+  formData.append('avatar', avatarFile, `avatar.${extension}`);
+  return await axios.patch('api/me/', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+}
