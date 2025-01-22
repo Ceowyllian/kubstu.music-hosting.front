@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { MyContent, PersonInformation } from '../../components';
+import { PersonContentLinks, PersonForm } from '../../components/person/';
 
 function Me() {
   return (
@@ -10,10 +10,10 @@ function Me() {
     >
       <Row>
         <Col>
-          <PersonInformation />
+          <PersonForm />
         </Col>
         <Col>
-          <MyContent />
+          <PersonContentLinks />
         </Col>
       </Row>
     </Container>

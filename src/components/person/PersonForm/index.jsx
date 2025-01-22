@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
-import { getUser } from '../../auth';
-import { meUpdate } from '../../api/me';
+import { getUser } from 'auth';
+import { meUpdate } from 'api/me';
 import AvatarForm from './AvatarForm';
 
 function PersonForm({ onCancel }) {

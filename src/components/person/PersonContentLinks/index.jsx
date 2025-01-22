@@ -1,8 +1,8 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import MyContentButton from './MyContentButton';
+import PersonContentButton from './PersonContentButton';
 
-function MyContent() {
+function PersonContentLinks() {
   const childrenProps = [
     ['My tracks', 'my-tracks/', 'bi-music-note'],
     ['My playlists', 'my-playlists/', 'bi-collection-play'],
@@ -16,9 +16,9 @@ function MyContent() {
       {childrenProps.map(([text, link, icon], i) => {
         return (
           <ListGroup.Item key={i}>
-            <MyContentButton link={link} icon={icon}>
+            <PersonContentButton link={link} icon={icon}>
               {text}
-            </MyContentButton>
+            </PersonContentButton>
           </ListGroup.Item>
         );
       })}
@@ -26,4 +26,4 @@ function MyContent() {
   );
 }
 
-export default MyContent;
+export default PersonContentLinks;

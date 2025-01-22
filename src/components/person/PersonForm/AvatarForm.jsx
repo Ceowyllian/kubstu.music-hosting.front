@@ -1,7 +1,7 @@
 import React, { createRef, useState } from 'react';
 import { Button, Figure, Form } from 'react-bootstrap';
-import { getUser, setUser } from '../../auth';
-import { meRemoveAvatar, meSetAvatar } from '../../api/me';
+import { getUser, setUser } from 'auth';
+import { meRemoveAvatar, meSetAvatar } from 'api/me';
 
 function AvatarForm() {
   const input = createRef();
