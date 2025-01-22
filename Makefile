@@ -1,2 +1,2 @@
 format:
-	prettier .\src --write
+	prettier .\src --write --log-level warn
