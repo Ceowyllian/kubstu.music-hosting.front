@@ -1,3 +1,6 @@
+import avatar_placeholder from '../assets/avatar_placeholder.png';
+import { API_URL } from '../shared/constants';
+
 export function setUser({
   id,
   user_id,
@@ -31,6 +34,10 @@ export function getUser() {
     avatar: localStorage.getItem('avatar'),
     summary: localStorage.getItem('summary'),
     public_email: localStorage.getItem('public_email'),
+    getAvatarSrc: function () {
+      if (this.avatar !== null) return `${API_URL}${this.avatar}/`;
+      return avatar_placeholder;
+    },
   };
 }
 
