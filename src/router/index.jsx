@@ -2,8 +2,22 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
 import { BaseLayout, EmptyLayout } from 'layout';
-import { HOME, LOGIN, ME, REGISTRATION, SEARCH_RESULTS } from './routes';
-import { Home, Login, Me, Registration, SearchResults } from './pages';
+import {
+  HOME,
+  LOGIN,
+  ME,
+  REGISTRATION,
+  SEARCH_RESULTS,
+  UPLOAD_TRACK,
+} from './routes';
+import {
+  Home,
+  Login,
+  Me,
+  Registration,
+  SearchResults,
+  UploadTrack,
+} from './pages';
 import RequireAuth from './RequireAuth';
 
 const routes = [
@@ -34,6 +48,10 @@ const routes = [
       {
         path: SEARCH_RESULTS,
         element: <SearchResults />,
+      },
+      {
+        path: UPLOAD_TRACK,
+        element: <RequireAuth page={<UploadTrack />} />,
       },
     ],
   },
