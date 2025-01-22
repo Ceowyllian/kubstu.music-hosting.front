@@ -1,8 +1,11 @@
-import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { PersonContentLinks, PersonForm } from 'components/person/';
+import PersonInformation from '../../components/person/PersonInformation';
 
 function Me() {
+  const [editMode, setEditMode] = useState(false);
+
   return (
     <Container
       fluid
@@ -10,7 +13,17 @@ function Me() {
     >
       <Row>
         <Col>
-          <PersonForm />
+          {!editMode && <PersonInformation />}
+          {editMode && <PersonForm />}
+          <Button
+            sm
+            className={
+              'bg-transparent border-1 text-dark border-dark w-100 mt-2'
+            }
+            onClick={() => setEditMode(!editMode)}
+          >
+            {editMode ? 'Cancel editing' : 'Edit'}
+          </Button>
         </Col>
         <Col>
           <PersonContentLinks />
