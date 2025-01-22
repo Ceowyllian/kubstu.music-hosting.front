@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
-import { login } from '../../api/auth';
+import { login } from 'api/auth';
 import { Link, useNavigate } from 'react-router-dom';
-import { meRetrieve } from '../../api/me';
-import { setUser } from '../../auth/';
+import { meRetrieve } from 'api/me';
+import { setUser } from 'auth/';
 
 function LoginForm() {
   const [email, setEmail] = useState(null);

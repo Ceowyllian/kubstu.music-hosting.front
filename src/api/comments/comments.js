@@ -1,4 +1,4 @@
-import axios from '../';
+import axios from 'api';
 
 export async function commentUpdate(id, body) {
   return await axios.patch(`api/comments/${id}/`, body);

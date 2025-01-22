@@ -1,4 +1,4 @@
-import axios from '../index';
+import axios from 'api';
 
 export async function trackLikeCreate(id) {
   return await axios.post(`api/music/tracks/${id}/like/`);

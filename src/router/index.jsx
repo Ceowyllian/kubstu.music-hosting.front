@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import { BaseLayout, EmptyLayout } from '../layout';
+import { BaseLayout, EmptyLayout } from 'layout';
 import { HOME, LOGIN, ME, REGISTRATION } from './routes';
 import { Home, Login, Me, Registration } from './pages';
 import RequireAuth from './RequireAuth';

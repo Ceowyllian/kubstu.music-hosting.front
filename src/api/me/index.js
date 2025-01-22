@@ -1,4 +1,4 @@
-import axios from '../index';
+import axios from 'api';
 
 export async function meRetrieve() {
   return await axios.get('api/me/');

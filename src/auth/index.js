@@ -1,5 +1,5 @@
-import avatar_placeholder from '../assets/avatar_placeholder.png';
-import { API_URL } from '../shared/constants';
+import avatar_placeholder from 'assets/avatar_placeholder.png';
+import { API_URL } from 'shared/constants';
 
 export function setUser({
   id,

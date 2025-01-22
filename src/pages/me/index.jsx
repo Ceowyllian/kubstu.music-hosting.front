@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { PersonContentLinks, PersonForm } from '../../components/person/';
+import { PersonContentLinks, PersonForm } from 'components/person/';
 
 function Me() {
   return (

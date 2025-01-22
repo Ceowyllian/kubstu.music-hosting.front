@@ -1,4 +1,4 @@
-import axios from '../';
+import axios from 'api';
 
 export async function trackList() {
   // TODO add request params

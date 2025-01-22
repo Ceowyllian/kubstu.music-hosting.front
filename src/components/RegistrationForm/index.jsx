@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, Form, InputGroup } from 'react-bootstrap';
-import { createUser } from '../../api/auth';
+import { createUser } from 'api/auth';
 import { Link, useNavigate } from 'react-router-dom';
 
 function RegistrationForm() {

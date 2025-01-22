@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { RegistrationForm } from '../../components';
+import { RegistrationForm } from 'components';
 
 function Registration() {
   return (

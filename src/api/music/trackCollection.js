@@ -1,4 +1,4 @@
-import axios from '../';
+import axios from 'api';
 
 export async function collectionTrackList(collectionName, id) {
   return await axios.get(`api/music/${collectionName}/${id}/tracks/`);

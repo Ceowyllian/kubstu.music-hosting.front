@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { getUser, isUserAuthenticated, removeUser } from '../../auth/';
-import { logout } from '../../api/auth';
+import { getUser, isUserAuthenticated, removeUser } from 'auth/';
+import { logout } from 'api/auth';
 
 export default function UserBar() {
   const user = getUser();
