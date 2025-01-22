@@ -4,12 +4,12 @@ import { getUser, setUser } from 'auth';
 import { meUpdate } from 'api/me';
 import AvatarForm from './AvatarForm';
 
-function PersonForm({ onCancel }) {
+function PersonForm() {
   const user = getUser();
   const [summary, setSummary] = useState('');
   const [public_email, setPublicEmail] = useState('');
 
-  async function handleSubmit(e) {
+  async function handleSubmit() {
     const me = await meUpdate(summary, public_email);
     setUser(me.data);
     window.location.reload();
