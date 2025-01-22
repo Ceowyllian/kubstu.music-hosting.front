@@ -1,11 +1,8 @@
 import React from 'react';
-import { Col, Container, Figure, Row } from 'react-bootstrap';
-import { getUser } from '../../auth';
-import { MyContent } from '../../components';
+import { Col, Container, Row } from 'react-bootstrap';
+import { MyContent, PersonInformation } from '../../components';
 
 function Profile() {
-  const user = getUser();
-
   return (
     <Container
       fluid
@@ -13,11 +10,7 @@ function Profile() {
     >
       <Row>
         <Col>
-          <Figure>
-            <Figure.Image src={user.avatar} />
-            <Figure.Caption>Avatar</Figure.Caption>
-          </Figure>
-          <h1>{user.username}</h1>
+          <PersonInformation />
         </Col>
         <Col>
           <MyContent />

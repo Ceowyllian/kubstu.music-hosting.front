@@ -12,9 +12,9 @@ export function setUser({
   localStorage.setItem('person_id', id);
   localStorage.setItem('user_id', user_id);
   localStorage.setItem('username', username);
-  if (avatar) localStorage.setItem('avatar', avatar);
-  if (summary) localStorage.setItem('summary', summary);
-  if (public_email) localStorage.setItem('public_email', public_email);
+  localStorage.setItem('avatar', avatar || '');
+  localStorage.setItem('summary', summary || '');
+  localStorage.setItem('public_email', public_email || '');
 }
 
 export function removeUser() {
@@ -35,7 +35,7 @@ export function getUser() {
     summary: localStorage.getItem('summary'),
     public_email: localStorage.getItem('public_email'),
     getAvatarSrc: function () {
-      if (this.avatar !== null) return `${API_URL}${this.avatar}/`;
+      if (this.avatar) return `${API_URL}${this.avatar}/`;
       return avatar_placeholder;
     },
   };
