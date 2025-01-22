@@ -36,59 +36,63 @@ function AvatarForm() {
   }
 
   return (
-    <Form>
+    <>
       <Figure>
         <Figure.Image src={avatarSrc} />
-        <Figure.Caption>
-          {!inputIsSet && (
-            <Button
-              className={
-                'bg-transparent text-dark border-1 border-dark float-start'
-              }
-              size={'sm'}
-              onClick={() => input.current.click()}
-            >
-              Select an image
-            </Button>
-          )}
-
-          {inputIsSet && (
-            <Button
-              className={
-                'bg-transparent text-dark border-1 border-dark float-start'
-              }
-              size={'sm'}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-          )}
-
-          {inputIsSet && (
-            <Button
-              className={
-                'bg-transparent text-danger border-1 border-danger float-end'
-              }
-              size={'sm'}
-              onClick={handleReset}
-            >
-              Reset
-            </Button>
-          )}
-
-          {!inputIsSet && user.avatar && (
-            <Button
-              className={
-                'bg-transparent text-danger border-1 border-danger float-end'
-              }
-              size={'sm'}
-              onClick={handleRemoveAvatar}
-            >
-              Delete avatar
-            </Button>
-          )}
-        </Figure.Caption>
       </Figure>
+      <div>
+        {!inputIsSet && (
+          <Button
+            className={
+              'bg-transparent text-dark border-1 border-dark float-start'
+            }
+            size={'sm'}
+            onClick={() => input.current.click()}
+          >
+            <span className={'bi-search me-1'} />
+            Select
+          </Button>
+        )}
+        {inputIsSet && (
+          <Button
+            className={
+              'bg-transparent text-dark border-1 border-dark float-start'
+            }
+            size={'sm'}
+            onClick={handleSubmit}
+          >
+            <span className={'bi-upload me-1'} />
+            Upload
+          </Button>
+        )}
+
+        {inputIsSet && (
+          <Button
+            className={
+              'bg-transparent text-danger border-1 border-danger float-end'
+            }
+            size={'sm'}
+            onClick={handleReset}
+          >
+            <span className={'bi-x me-1'} />
+            Reset
+          </Button>
+        )}
+
+        {!inputIsSet && user.avatar && (
+          <Button
+            className={
+              'bg-transparent text-danger border-1 border-danger float-end'
+            }
+            size={'sm'}
+            onClick={handleRemoveAvatar}
+          >
+            <span className={'bi-trash me-1'} />
+            Delete avatar
+          </Button>
+        )}
+      </div>
+
       <Form.Control
         type={'file'}
         accept={'image/*'}
@@ -96,7 +100,7 @@ function AvatarForm() {
         ref={input}
         onChange={handleFileChange}
       />
-    </Form>
+    </>
   );
 }
 

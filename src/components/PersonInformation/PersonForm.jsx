@@ -19,7 +19,7 @@ function PersonForm({ onCancel }) {
       <Card.Header className={'bg-dark-subtle'}>{user.username}</Card.Header>
       <Card.Body>
         <AvatarForm />
-        <Form>
+        <Form className={'mt-5 mb-2'}>
           <InputGroup>
             <InputGroup.Text>Summary</InputGroup.Text>
             <Form.Control
@@ -35,18 +35,19 @@ function PersonForm({ onCancel }) {
             />
           </InputGroup>
         </Form>
-      </Card.Body>
-      <Card.Footer>
-        <Button className={'me-2'} onClick={handleSubmit}>
+        <Button className={'me-2'} onClick={handleSubmit} size={'sm'}>
           Save
         </Button>
         <Button
-          className={'border-danger border-2 text-danger bg-transparent'}
+          className={
+            'border-danger border-2 text-danger bg-transparent float-end'
+          }
           onClick={onCancel}
+          size={'sm'}
         >
-          Cancel
+          Cancel editing
         </Button>
-      </Card.Footer>
+      </Card.Body>
     </Card>
   );
 }
