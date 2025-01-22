@@ -1,6 +1,6 @@
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
-import PersonContentButton from './PersonContentButton';
+import { Card, ListGroup } from 'react-bootstrap';
+import { CardLinkWithIcon } from 'components';
 
 function PersonContentLinks() {
   const childrenProps = [
@@ -12,17 +12,21 @@ function PersonContentLinks() {
   ];
 
   return (
-    <ListGroup>
-      {childrenProps.map(([text, link, icon], i) => {
-        return (
-          <ListGroup.Item key={i}>
-            <PersonContentButton link={link} icon={icon}>
-              {text}
-            </PersonContentButton>
-          </ListGroup.Item>
-        );
-      })}
-    </ListGroup>
+    <Card>
+      <Card.Body>
+        <ListGroup>
+          {childrenProps.map(([text, link, icon], i) => {
+            return (
+              <ListGroup.Item key={i}>
+                <CardLinkWithIcon link={link} icon={icon}>
+                  {text}
+                </CardLinkWithIcon>
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 }
 
