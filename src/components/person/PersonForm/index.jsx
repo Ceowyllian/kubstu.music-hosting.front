@@ -38,15 +38,6 @@ function PersonForm({ onCancel }) {
         <Button className={'me-2'} onClick={handleSubmit} size={'sm'}>
           Save
         </Button>
-        <Button
-          className={
-            'border-danger border-2 text-danger bg-transparent float-end'
-          }
-          onClick={onCancel}
-          size={'sm'}
-        >
-          Cancel editing
-        </Button>
       </Card.Body>
     </Card>
   );
