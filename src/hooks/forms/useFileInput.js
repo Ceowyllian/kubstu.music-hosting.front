@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function useFileInput({
-  inputRef,
   initialFileUrl = null,
   required = false,
 }) {
+  const ref = useRef();
   const [value, setValue] = useState(null);
   const [fileUrl, setFileUrl] = useState(initialFileUrl)
   const [isTouched, setIsTouched] = useState(false);
@@ -15,7 +15,7 @@ function useFileInput({
     setValue(null);
     setFileUrl(initialFileUrl);
     setErrorText("");
-    inputRef.current.value = null;
+    ref.current.value = null;
   };
 
   const onChange = (e) => {
@@ -34,6 +34,7 @@ function useFileInput({
 
   return {
     value,
+    ref,
     required,
     fileUrl,
     isTouched,

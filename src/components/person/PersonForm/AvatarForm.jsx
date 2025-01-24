@@ -1,17 +1,16 @@
 import { meRemoveAvatar, meSetAvatar } from 'api/me';
 import { getUser, setUser } from 'auth';
+import { FileInput } from "components/forms";
 import { useForm } from "hooks/forms";
 import useFileInput from "hooks/forms/useFileInput";
-import React, { useRef } from 'react';
-import { Button, Figure, Form } from 'react-bootstrap';
+import React from 'react';
+import { Button, Figure } from 'react-bootstrap';
 
 function AvatarForm() {
   const user = getUser();
-  const input = useRef();
 
   const fields = {
     avatar: useFileInput({
-      inputRef: input,
       initialFileUrl: user.getAvatarSrc(),
       required: true,
     }),
@@ -51,7 +50,7 @@ function AvatarForm() {
               'bg-transparent text-dark border-1 border-dark float-start'
             }
             size={'sm'}
-            onClick={() => input.current.click()}
+            onClick={() => fields.avatar.ref.current.click()}
           >
             <span className={'bi-search me-1'}/>
             Select
@@ -96,12 +95,10 @@ function AvatarForm() {
           </Button>
         )}
       </div>
-      <Form.Control
-        type={'file'}
-        accept={'image/*'}
+      <FileInput
+        state={fields.avatar}
         hidden
-        ref={input}
-        onChange={fields.avatar.onChange}
+        accept={"image/*"}
       />
     </>
   );
