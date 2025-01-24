@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useInput(initialValue) {
+function useInput(initialValue, required=false) {
   const [value, setValue] = useState(initialValue);
   const [isTouched, setIsTouched] = useState(false);
   const [errorText, setErrorText] = useState("");
@@ -16,7 +16,15 @@ function useInput(initialValue) {
     setValue(e.target.value);
   };
 
-  return {value, isTouched, errorText, setErrorText, resetValue, onChange};
+  return {
+    value,
+    required,
+    isTouched,
+    errorText,
+    setErrorText,
+    resetValue,
+    onChange,
+  };
 }
 
 export default useInput;
