@@ -4,7 +4,7 @@ export async function meRetrieve() {
   return await axios.get('api/me/');
 }
 
-export async function meUpdate(summary, public_email) {
+export async function meUpdate({summary, public_email}) {
   return await axios.patch('api/me/', { summary, public_email });
 }
 
