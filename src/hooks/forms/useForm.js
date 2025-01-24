@@ -40,7 +40,24 @@ function useForm(fields, onSubmit) {
       } else throw e;
     }
   };
-  return {isTouched, hasError, errorMessage, fields, reset, handleSubmit}
+
+  const getTouchedValues = () => {
+    const data = {};
+    for (const [field, state] of Object.entries(fields)) {
+      if (state.isTouched) data[field] = state.value;
+    }
+    return data;
+  };
+
+  return {
+    isTouched,
+    hasError,
+    errorMessage,
+    fields,
+    getTouchedValues,
+    reset,
+    handleSubmit
+  };
 }
 
 export default useForm;
