@@ -1,11 +1,7 @@
 import axios from 'api';
 
-async function login({login, password}) {
-  const body = {
-    email: login,
-    password: password,
-  };
-  return await axios.post('api/auth/token/login/', body);
+async function login({email, password}) {
+  return await axios.post('api/auth/token/login/', {email, password});
 }
 
 export default login;
