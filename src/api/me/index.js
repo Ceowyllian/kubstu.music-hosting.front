@@ -14,7 +14,7 @@ export async function meRemoveAvatar() {
 
 export async function meSetAvatar({avatar, extension}) {
   const formData = new FormData();
-  formData.append('avatar', avatar, `avatar.${extension}`);
+  formData.append('avatar', avatar);
   return await axios.patch('api/me/', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });
