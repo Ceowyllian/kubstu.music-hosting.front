@@ -1,6 +1,10 @@
 import { useState } from "react";
 
-function useFileInput(inputRef, initialFileUrl=null, required=false) {
+function useFileInput({
+  inputRef,
+  initialFileUrl = null,
+  required = false,
+}) {
   const [value, setValue] = useState(null);
   const [fileUrl, setFileUrl] = useState(initialFileUrl)
   const [isTouched, setIsTouched] = useState(false);

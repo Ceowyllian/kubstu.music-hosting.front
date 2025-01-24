@@ -9,7 +9,13 @@ function AvatarForm() {
   const user = getUser();
   const input = useRef();
 
-  const fields = {avatar: useFileInput(input, user.getAvatarSrc())};
+  const fields = {
+    avatar: useFileInput({
+      inputRef: input,
+      initialFileUrl: user.getAvatarSrc(),
+      required: true,
+    }),
+  };
   const {
     isTouched,
     hasError,
