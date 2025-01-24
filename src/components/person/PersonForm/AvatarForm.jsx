@@ -1,45 +1,27 @@
-import React, { createRef, useState } from 'react';
-import { Button, Figure, Form } from 'react-bootstrap';
-import { getUser, setUser } from 'auth';
 import { meRemoveAvatar, meSetAvatar } from 'api/me';
+import { getUser, setUser } from 'auth';
+import { useForm } from "hooks/forms";
+import useFileInput from "hooks/forms/useFileInput";
+import React, { useRef } from 'react';
+import { Button, Figure, Form } from 'react-bootstrap';
 
 function AvatarForm() {
-  const input = createRef();
-  const [avatarFile, setAvatarFile] = useState(null);
   const user = getUser();
-  const [avatarSrc, setAvatarSrc] = useState(user.getAvatarSrc());
-  const [inputIsSet, setInputIsSet] = useState(false);
-  const [uploadFailed, setUploadFailed] = useState(false);
-  const [uploadFailedText, setUploadFailedText] = useState('');
+  const input = useRef();
 
-  function handleFileChange() {
-    setUploadFailed(false);
-    setAvatarFile(input.current.files[0]);
-    setAvatarSrc(URL.createObjectURL(input.current.files[0]));
-    setInputIsSet(true);
-  }
-
-  function handleReset() {
-    setInputIsSet(false);
-    setAvatarSrc(user.getAvatarSrc());
-    setAvatarFile(null);
-    setUploadFailedText('');
-    setUploadFailed(false);
-    input.current.value = '';
-  }
-
-  async function handleSubmit() {
-    try {
-      const response = await meSetAvatar(avatarFile, '');
-      setUser(response.data);
-      window.location.reload();
-    } catch (e) {
-      setUploadFailedText(
-        e?.response?.data?.extra?.fields?.avatar[0] || 'Upload failed',
-      );
-      setUploadFailed(true);
-    }
-  }
+  const fields = {avatar: useFileInput(input, user.getAvatarSrc())};
+  const {
+    isTouched,
+    hasError,
+    handleSubmit,
+    getTouchedValues,
+    reset,
+  } = useForm(fields, async (e) => {
+    // TODO infer file extension
+    const response = await meSetAvatar({...getTouchedValues(), extension: "png"});
+    setUser(response.data);
+    window.location.reload();
+  });
 
   async function handleRemoveAvatar() {
     const me = await meRemoveAvatar();
@@ -50,11 +32,14 @@ function AvatarForm() {
   return (
     <>
       <Figure>
-        <Figure.Image src={avatarSrc} alt={"Can't display the image"} />
-        {uploadFailed && <Figure.Caption>{uploadFailedText}</Figure.Caption>}
+        <Figure.Image
+          src={fields.avatar.fileUrl}
+          alt={"Can't display the image"}
+        />
+        {hasError && <Figure.Caption>{fields.avatar.errorText}</Figure.Caption>}
       </Figure>
       <div>
-        {!inputIsSet && (
+        {!isTouched && (
           <Button
             className={
               'bg-transparent text-dark border-1 border-dark float-start'
@@ -62,11 +47,11 @@ function AvatarForm() {
             size={'sm'}
             onClick={() => input.current.click()}
           >
-            <span className={'bi-search me-1'} />
+            <span className={'bi-search me-1'}/>
             Select
           </Button>
         )}
-        {inputIsSet && (
+        {isTouched && (
           <Button
             className={
               'bg-transparent text-dark border-1 border-dark float-start'
@@ -74,25 +59,25 @@ function AvatarForm() {
             size={'sm'}
             onClick={handleSubmit}
           >
-            <span className={'bi-upload me-1'} />
+            <span className={'bi-upload me-1'}/>
             Upload
           </Button>
         )}
 
-        {inputIsSet && (
+        {isTouched && (
           <Button
             className={
               'bg-transparent text-danger border-1 border-danger float-end'
             }
             size={'sm'}
-            onClick={handleReset}
+            onClick={reset}
           >
-            <span className={'bi-x me-1'} />
+            <span className={'bi-x me-1'}/>
             Reset
           </Button>
         )}
 
-        {!inputIsSet && user.avatar && (
+        {user.avatar && (
           <Button
             className={
               'bg-transparent text-danger border-1 border-danger float-end'
@@ -100,18 +85,17 @@ function AvatarForm() {
             size={'sm'}
             onClick={handleRemoveAvatar}
           >
-            <span className={'bi-trash me-1'} />
+            <span className={'bi-trash me-1'}/>
             Delete avatar
           </Button>
         )}
       </div>
-
       <Form.Control
         type={'file'}
         accept={'image/*'}
         hidden
         ref={input}
-        onChange={handleFileChange}
+        onChange={fields.avatar.onChange}
       />
     </>
   );

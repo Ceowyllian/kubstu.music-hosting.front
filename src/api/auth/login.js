@@ -1,6 +1,6 @@
 import axios from 'api';
 
-async function login(login, password) {
+async function login({login, password}) {
   const body = {
     email: login,
     password: password,

@@ -12,7 +12,7 @@ export async function meRemoveAvatar() {
   return await axios.patch('api/me/', { avatar: null });
 }
 
-export async function meSetAvatar(avatarFile, extension) {
+export async function meSetAvatar({avatarFile, extension}) {
   const formData = new FormData();
   formData.append('avatar', avatarFile, `avatar.${extension}`);
   return await axios.patch('api/me/', formData, {
