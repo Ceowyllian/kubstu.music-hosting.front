@@ -4,7 +4,7 @@ import { FileInput } from "components/forms";
 import { useForm } from "hooks/forms";
 import useFileInput from "hooks/forms/useFileInput";
 import React from 'react';
-import { Button, Figure } from 'react-bootstrap';
+import { Button, Figure, Image } from 'react-bootstrap';
 
 function AvatarForm() {
   const user = getUser();
@@ -17,7 +17,6 @@ function AvatarForm() {
   };
   const {
     isTouched,
-    hasError,
     handleSubmit,
     getTouchedValues,
     reset,
@@ -37,11 +36,11 @@ function AvatarForm() {
   return (
     <>
       <Figure>
-        <Figure.Image
+        <Image
           src={fields.avatar.fileUrl}
-          alt={"Can't display the image"}
+          height={"200px"}
+          width={"auto"}
         />
-        {hasError && <Figure.Caption>{fields.avatar.errorText}</Figure.Caption>}
       </Figure>
       <div>
         {!isTouched && (
