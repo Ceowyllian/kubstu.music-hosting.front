@@ -1,19 +1,16 @@
 import React from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
+import { UploadTrackForm } from "components/music";
 
 function UploadTrack() {
   return (
-    <Card>
-      <Card.Header>
-        <Card.Title>Upload track</Card.Title>
-      </Card.Header>
-      <Card.Body></Card.Body>
-      <Card.Footer>
-        <Button>Upload</Button>
-        <Button>Reset</Button>
-      </Card.Footer>
-    </Card>
+    <Container
+      fluid
+      className={"d-flex justify-content-center align-items-center"}
+    >
+      <UploadTrackForm />
+    </Container>
   );
 }
 
-export default UploadTrack();
+export default UploadTrack;
