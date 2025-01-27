@@ -8,7 +8,7 @@ import { Container, ListGroup } from 'react-bootstrap';
 function MyTracks() {
   const [tracks, setTracks] = useState([]);
 
-  const response = useFetch(myTracks, "-created");
+  const response = useFetch(myTracks, { ordering: '-created' });
 
   useEffect(() => {
     setTracks(response?.data?.results || []);
