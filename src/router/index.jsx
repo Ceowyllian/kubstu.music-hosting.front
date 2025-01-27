@@ -6,6 +6,7 @@ import {
   HOME,
   LOGIN,
   ME,
+  MY_TRACKS,
   REGISTRATION,
   SEARCH_RESULTS,
   UPLOAD_TRACK,
@@ -14,6 +15,7 @@ import {
   Home,
   Login,
   Me,
+  MyTracks,
   Registration,
   SearchResults,
   UploadTrack,
@@ -22,39 +24,48 @@ import RequireAuth from './RequireAuth';
 
 const routes = [
   {
-    element: <EmptyLayout />,
+    element: <EmptyLayout/>,
     children: [
       {
         path: LOGIN,
-        element: <Login />,
+        element: <Login/>,
       },
       {
         path: REGISTRATION,
-        element: <Registration />,
+        element: <Registration/>,
       },
     ],
   },
   {
-    element: <BaseLayout />,
+    element: <BaseLayout/>,
     children: [
       {
         path: HOME,
-        element: <Home />,
-      },
-      {
-        path: ME,
-        element: <RequireAuth page={<Me />} />,
+        element: <Home/>,
       },
       {
         path: SEARCH_RESULTS,
-        element: <SearchResults />,
-      },
-      {
-        path: UPLOAD_TRACK,
-        element: <RequireAuth page={<UploadTrack />} />,
+        element: <SearchResults/>,
       },
     ],
   },
+  {
+    element: <RequireAuth page={<BaseLayout/>}/>,
+    children: [
+      {
+        path: ME,
+        element: <Me />,
+      },
+      {
+        path: UPLOAD_TRACK,
+        element: <UploadTrack />,
+      },
+      {
+        path: MY_TRACKS,
+        element: <MyTracks/>,
+      },
+    ]
+  }
 ];
 
 export default createBrowserRouter(routes);
