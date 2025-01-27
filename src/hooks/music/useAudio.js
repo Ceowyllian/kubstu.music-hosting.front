@@ -58,6 +58,12 @@ function useAudio(src) {
     setCurrentTime(target.currentTime);
   };
 
+  const onEnded = async () => {
+    pause();
+    seek(0);
+    if (isLoop) await play();
+  };
+
   useEffect(() => {
     const element = audioRef.current;
 
@@ -69,10 +75,12 @@ function useAudio(src) {
 
     element.addEventListener('loadeddata', onLoadedData);
     element.addEventListener('timeupdate', onTimeUpdate);
+    element.addEventListener('ended', onEnded);
 
     return () => {
       element.removeEventListener('loadeddata', onLoadedData);
       element.removeEventListener('timeupdate', onTimeUpdate);
+      element.removeEventListener('ended', onEnded);
       element.pause();
     };
   }, []);
