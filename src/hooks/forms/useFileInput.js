@@ -1,20 +1,17 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 
-function useFileInput({
-  initialFileUrl = null,
-  required = false,
-}) {
+function useFileInput({ initialFileUrl = null, required = false }) {
   const ref = useRef();
   const [value, setValue] = useState(null);
-  const [fileUrl, setFileUrl] = useState(initialFileUrl)
+  const [fileUrl, setFileUrl] = useState(initialFileUrl);
   const [isTouched, setIsTouched] = useState(false);
-  const [errorText, setErrorText] = useState("");
+  const [errorText, setErrorText] = useState('');
 
   const resetValue = () => {
     setIsTouched(false);
     setValue(null);
     setFileUrl(initialFileUrl);
-    setErrorText("");
+    setErrorText('');
     ref.current.value = null;
   };
 

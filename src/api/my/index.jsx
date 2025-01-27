@@ -1,7 +1,5 @@
-import axios from "api";
+import axios from 'api';
 
-export async function myTracks({
-  ordering = "-created",
-}) {
+export async function myTracks({ ordering = '-created' }) {
   return await axios.get(`api/my/tracks/?ordering=${ordering}`);
 }

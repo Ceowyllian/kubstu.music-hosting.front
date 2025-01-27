@@ -1,8 +1,8 @@
 import { meRemoveAvatar, meSetAvatar } from 'api/me';
 import { getUser, setUser } from 'auth';
-import { FileInput } from "components/forms";
-import { useForm } from "hooks/forms";
-import useFileInput from "hooks/forms/useFileInput";
+import { FileInput } from 'components/forms';
+import { useForm } from 'hooks/forms';
+import useFileInput from 'hooks/forms/useFileInput';
 import React from 'react';
 import { Button, Figure, Image } from 'react-bootstrap';
 
@@ -15,17 +15,18 @@ function AvatarForm() {
       required: true,
     }),
   };
-  const {
-    isTouched,
-    handleSubmit,
-    getTouchedValues,
-    reset,
-  } = useForm(fields, async (e) => {
-    // TODO infer file extension
-    const response = await meSetAvatar({...getTouchedValues(), extension: "png"});
-    setUser(response.data);
-    window.location.reload();
-  });
+  const { isTouched, handleSubmit, getTouchedValues, reset } = useForm(
+    fields,
+    async (e) => {
+      // TODO infer file extension
+      const response = await meSetAvatar({
+        ...getTouchedValues(),
+        extension: 'png',
+      });
+      setUser(response.data);
+      window.location.reload();
+    },
+  );
 
   async function handleRemoveAvatar() {
     const me = await meRemoveAvatar();
@@ -36,11 +37,7 @@ function AvatarForm() {
   return (
     <>
       <Figure>
-        <Image
-          src={fields.avatar.fileUrl}
-          height={"200px"}
-          width={"auto"}
-        />
+        <Image src={fields.avatar.fileUrl} height={'200px'} width={'auto'} />
       </Figure>
       <div>
         {!isTouched && (
@@ -51,7 +48,7 @@ function AvatarForm() {
             size={'sm'}
             onClick={() => fields.avatar.ref.current.click()}
           >
-            <span className={'bi-search me-1'}/>
+            <span className={'bi-search me-1'} />
             Select
           </Button>
         )}
@@ -63,7 +60,7 @@ function AvatarForm() {
             size={'sm'}
             onClick={handleSubmit}
           >
-            <span className={'bi-upload me-1'}/>
+            <span className={'bi-upload me-1'} />
             Upload
           </Button>
         )}
@@ -76,7 +73,7 @@ function AvatarForm() {
             size={'sm'}
             onClick={reset}
           >
-            <span className={'bi-x me-1'}/>
+            <span className={'bi-x me-1'} />
             Reset
           </Button>
         )}
@@ -89,16 +86,12 @@ function AvatarForm() {
             size={'sm'}
             onClick={handleRemoveAvatar}
           >
-            <span className={'bi-trash me-1'}/>
+            <span className={'bi-trash me-1'} />
             Delete avatar
           </Button>
         )}
       </div>
-      <FileInput
-        state={fields.avatar}
-        hidden
-        accept={"image/*"}
-      />
+      <FileInput state={fields.avatar} hidden accept={'image/*'} />
     </>
   );
 }

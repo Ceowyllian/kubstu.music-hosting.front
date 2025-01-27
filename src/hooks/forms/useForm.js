@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function useForm(fields, onSubmit) {
   const [isTouched, setIsTouched] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const touchedFields = () => Object.values(fields).map(f => f.isTouched);
+  const touchedFields = () => Object.values(fields).map((f) => f.isTouched);
 
   useEffect(() => {
     setIsTouched(touchedFields().reduce((a, v) => a || v, false));
@@ -13,19 +13,18 @@ function useForm(fields, onSubmit) {
 
   const reset = () => {
     setHasError(false);
-    Object.values(fields).map(field => field.resetValue())
+    Object.values(fields).map((field) => field.resetValue());
   };
 
   const handleValidationError = (data) => {
     const errors = data?.extra?.fields;
     if (errors) {
-      const {non_field_errors} = errors;
-      if (non_field_errors)
-        setErrorMessage(non_field_errors.join(";"));
+      const { non_field_errors } = errors;
+      if (non_field_errors) setErrorMessage(non_field_errors.join(';'));
 
       for (const [fieldName, field] of Object.entries(fields)) {
         const fieldErrors = errors?.[fieldName] || [];
-        field.setErrorText(fieldErrors.join("; "));
+        field.setErrorText(fieldErrors.join('; '));
       }
     }
   };
@@ -56,7 +55,7 @@ function useForm(fields, onSubmit) {
     fields,
     getTouchedValues,
     reset,
-    handleSubmit
+    handleSubmit,
   };
 }
 

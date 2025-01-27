@@ -9,7 +9,7 @@ export async function trackCreate(body) {
   const formData = new FormData();
   Object.entries(body).map(([k, v]) => formData.append(k, v));
   return await axios.post(`api/music/tracks/`, formData, {
-    headers: {"Content-Type": "multipart/form-data"},
+    headers: { 'Content-Type': 'multipart/form-data' },
   });
 }
 

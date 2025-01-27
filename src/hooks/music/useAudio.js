@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 function useAudio(src) {
-
   const audioRef = useRef(new Audio(src));
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -13,9 +12,7 @@ function useAudio(src) {
   const [duration, setDuration] = useState(0);
 
   const play = useCallback(async () => {
-    await audioRef.current
-      .play()
-      .then(() => setIsPlaying(true));
+    await audioRef.current.play().then(() => setIsPlaying(true));
   }, []);
 
   const pause = useCallback(() => {
@@ -33,31 +30,31 @@ function useAudio(src) {
     setIsMuted(false);
   }, []);
 
-  const seek = useCallback(time => {
+  const seek = useCallback((time) => {
     const duration = audioRef.current.duration;
     const newTime = time >= 0 ? Math.min(time, duration) : Math.max(time, 0);
     audioRef.current.currentTime = newTime;
     setCurrentTime(newTime);
   }, []);
 
-  const setVolumeCallback = useCallback(volume => {
+  const setVolumeCallback = useCallback((volume) => {
     const newVolume = volume >= 0 ? Math.min(volume, 1) : Math.max(volume, 0);
     audioRef.current.volume = newVolume;
     setVolume(newVolume);
   }, []);
 
-  const setIsLoopCallback = useCallback(loop => {
+  const setIsLoopCallback = useCallback((loop) => {
     audioRef.current.loop = loop;
     setIsLoop(loop);
   }, []);
 
-  const onLoadedData = ({target}) => {
+  const onLoadedData = ({ target }) => {
     setIsSrcLoading(false);
     setDuration(target.duration);
     setCurrentTime(target.currentTime);
   };
 
-  const onTimeUpdate = ({target}) => {
+  const onTimeUpdate = ({ target }) => {
     setCurrentTime(target.currentTime);
   };
 
@@ -70,12 +67,12 @@ function useAudio(src) {
 
     setIsSrcLoading(true);
 
-    element.addEventListener("loadeddata", onLoadedData);
-    element.addEventListener("timeupdate", onTimeUpdate);
+    element.addEventListener('loadeddata', onLoadedData);
+    element.addEventListener('timeupdate', onTimeUpdate);
 
     return () => {
-      element.removeEventListener("loadeddata", onLoadedData);
-      element.removeEventListener("timeupdate", onTimeUpdate);
+      element.removeEventListener('loadeddata', onLoadedData);
+      element.removeEventListener('timeupdate', onTimeUpdate);
       element.pause();
     };
   }, []);

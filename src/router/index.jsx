@@ -24,33 +24,33 @@ import RequireAuth from './RequireAuth';
 
 const routes = [
   {
-    element: <EmptyLayout/>,
+    element: <EmptyLayout />,
     children: [
       {
         path: LOGIN,
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: REGISTRATION,
-        element: <Registration/>,
+        element: <Registration />,
       },
     ],
   },
   {
-    element: <BaseLayout/>,
+    element: <BaseLayout />,
     children: [
       {
         path: HOME,
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: SEARCH_RESULTS,
-        element: <SearchResults/>,
+        element: <SearchResults />,
       },
     ],
   },
   {
-    element: <RequireAuth page={<BaseLayout/>}/>,
+    element: <RequireAuth page={<BaseLayout />} />,
     children: [
       {
         path: ME,
@@ -62,10 +62,10 @@ const routes = [
       },
       {
         path: MY_TRACKS,
-        element: <MyTracks/>,
+        element: <MyTracks />,
       },
-    ]
-  }
+    ],
+  },
 ];
 
 export default createBrowserRouter(routes);

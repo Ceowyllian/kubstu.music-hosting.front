@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 function useFetch(fetchFunction, ...params) {
   const [response, setResponse] = useState(null);
 
   useEffect(() => {
     let ignore = false;
-    fetchFunction({...params}).then(r => {
+    fetchFunction({ ...params }).then((r) => {
       if (!ignore) setResponse(r);
-      return () => ignore = true;
-    })
+      return () => (ignore = true);
+    });
   }, [fetchFunction, ...params]);
 
   return response;

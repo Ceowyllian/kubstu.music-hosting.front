@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { UploadTrackForm } from "components/music";
+import { UploadTrackForm } from 'components/music';
 
 function UploadTrack() {
   return (
     <Container
       fluid
-      className={"d-flex justify-content-center align-items-center"}
+      className={'d-flex justify-content-center align-items-center'}
     >
       <UploadTrackForm />
     </Container>
