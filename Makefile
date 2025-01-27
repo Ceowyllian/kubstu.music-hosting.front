@@ -1,2 +1,2 @@
 format:
-	prettier .\src --write --log-level warn
+	npx prettier .\src --write --log-level warn
