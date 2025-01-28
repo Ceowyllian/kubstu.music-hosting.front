@@ -1,3 +1,4 @@
+import { streamAudio } from 'api/stream_audio';
 import { useAudio } from 'hooks/music';
 import React, { createContext, useCallback, useContext, useState } from 'react';
 
@@ -16,7 +17,7 @@ export const PlayerProvider = ({ children }) => {
 
   const setTrack = async (track) => {
     setPlayerTrack(track);
-    audioRef.current.src = track.sound_file;
+    audioRef.current.src = streamAudio(track.sound_file);
   };
 
   return (

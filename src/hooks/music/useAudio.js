@@ -30,9 +30,14 @@ function useAudio() {
     setIsMuted(false);
   }, []);
 
-  const seek = useCallback(async (time) => {
+  const seek = useCallback((time) => {
     const duration = audioRef.current.duration;
     const newTime = time >= 0 ? Math.min(time, duration) : Math.max(time, 0);
+
+    // TODO use a less ugly way to wait for a fragment to load
+    while (audioRef.current.currentTime !== newTime) {
+      audioRef.current.currentTime = newTime;
+    }
     setCurrentTime(newTime);
   }, []);
 
