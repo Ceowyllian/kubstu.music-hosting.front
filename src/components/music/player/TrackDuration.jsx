@@ -12,9 +12,9 @@ function TrackDuration({ currentTime, duration }) {
   const played = formatTime(currentTime);
   const total = formatTime(duration);
   return (
-    <>
+    <span className={'text-nowrap'}>
       {played} / {total}
-    </>
+    </span>
   );
 }
 

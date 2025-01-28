@@ -4,40 +4,29 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 const PlayerContext = createContext(undefined);
 
 export const PlayerProvider = ({ children }) => {
-  const [playingTrack, setPlayingTrack] = useState(null);
-  const [state, controls, setSource] = useAudio();
+  const [playerTrack, setPlayerTrack] = useState(null);
+  const [state, controls, audioRef] = useAudio();
 
   const isPlaying = useCallback(
     ({ id }) => {
-      return id === playingTrack?.id;
+      return id === playerTrack?.id;
     },
-    [playingTrack],
+    [playerTrack],
   );
 
-  const setTrack = useCallback(
-    async (track) => {
-      setPlayingTrack(track);
-      const { sound_file } = track;
-      await setSource(sound_file);
-    },
-    [setSource],
-  );
-
-  const removeTrack = useCallback(async () => {
-    await setSource(null);
-    setPlayingTrack(null);
-  }, [setSource]);
+  const setTrack = async (track) => {
+    setPlayerTrack(track);
+    audioRef.current.src = track.sound_file;
+  };
 
   return (
     <PlayerContext.Provider
       value={{
         state,
         controls,
-        playingTrack,
-        setTrack,
-        removeTrack,
         isPlaying,
-        source: state.source,
+        playerTrack,
+        setTrack,
       }}
     >
       {children}

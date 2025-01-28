@@ -1,3 +1,4 @@
+import { Player } from 'components/music/player';
 import React from 'react';
 import Stub from './Stub';
 import { Outlet } from 'react-router-dom';
@@ -8,6 +9,7 @@ function BaseLayout() {
     <Stub>
       <TopNavigation />
       <Outlet />
+      <Player />
     </Stub>
   );
 }

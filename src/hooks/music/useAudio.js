@@ -3,7 +3,6 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 function useAudio() {
   const audioRef = useRef(new Audio());
 
-  const [src, setSrc] = useState(undefined);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [isLoop, setIsLoop] = useState(false);
@@ -31,10 +30,9 @@ function useAudio() {
     setIsMuted(false);
   }, []);
 
-  const seek = useCallback((time) => {
+  const seek = useCallback(async (time) => {
     const duration = audioRef.current.duration;
     const newTime = time >= 0 ? Math.min(time, duration) : Math.max(time, 0);
-    audioRef.current.currentTime = newTime;
     setCurrentTime(newTime);
   }, []);
 
@@ -49,20 +47,14 @@ function useAudio() {
     setIsLoop(loop);
   }, []);
 
-  const setSource = useCallback(async (source) => {
-    setSrc(source);
-    audioRef.current.src = source;
-    await audioRef.current.load();
-  }, []);
-
-  const onLoadedData = ({ target }) => {
+  const onLoadedData = () => {
     setIsSrcLoading(false);
-    setDuration(target.duration);
-    setCurrentTime(target.currentTime);
+    setDuration(audioRef.current.duration);
+    setCurrentTime(0);
   };
 
-  const onTimeUpdate = ({ target }) => {
-    setCurrentTime(target.currentTime);
+  const onTimeUpdate = () => {
+    setCurrentTime(audioRef.current.currentTime);
   };
 
   const onEnded = useCallback(async () => {
@@ -93,7 +85,6 @@ function useAudio() {
   }, [isLoop, isMuted, volume, onEnded]);
 
   const state = {
-    src,
     isPlaying,
     isMuted,
     isLoop,
@@ -113,7 +104,7 @@ function useAudio() {
     setIsLoop: setIsLoopCallback,
   });
 
-  return [state, controls, setSource];
+  return [state, controls, audioRef];
 }
 
 export default useAudio;

@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 
 function TogglePlayButton() {
   const { controls, state } = usePlayerContext();
+
   return (
     <Button
       onClick={() => {
