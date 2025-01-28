@@ -5,6 +5,7 @@ import {
   TrackProgressBar,
   VolumeControls,
 } from 'components/music/player';
+import { PersonLink } from 'components/person';
 import { usePlayerContext } from 'hooks/music';
 import React from 'react';
 import { Col, Container, Navbar, Row } from 'react-bootstrap';
@@ -29,6 +30,11 @@ function Player() {
                 </TrackLink>
               </Col>
               <Col>
+                {playerTrack && (
+                  <PersonLink person={playerTrack.owner} color={'white'} />
+                )}
+              </Col>
+              <Col xs={1}>
                 <TrackDuration
                   duration={state.duration}
                   currentTime={state.currentTime}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { PersonContentLinks, PersonForm } from 'components/person/';
-import PersonInformation from '../../components/person/PersonInformation';
-import PersonActionLinks from '../../components/person/PersonActionLinks';
+import { PersonInformation, PersonActionLinks } from '../../components/person';
 
 function Me() {
   const [editMode, setEditMode] = useState(false);
