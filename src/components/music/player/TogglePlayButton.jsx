@@ -11,7 +11,7 @@ function TogglePlayButton() {
         state.isPlaying ? controls.pause() : controls.play();
       }}
     >
-      <span className={state.isPlaying ? 'bi-pause' : 'bi-play'} />
+      <span className={state.isPlaying ? 'bi-pause-fill' : 'bi-play-fill'} />
     </Button>
   );
 }

@@ -8,11 +8,11 @@ function formatTime(seconds) {
   return hh ? `${hh}:${mm}:${ss}` : `${mm}:${ss}`;
 }
 
-function TrackDuration({ currentTime, duration }) {
+function TrackDuration({ currentTime, duration, color = 'black' }) {
   const played = formatTime(currentTime);
   const total = formatTime(duration);
   return (
-    <span className={'text-nowrap'}>
+    <span className={`text-nowrap float-end text-${color}`}>
       {played} / {total}
     </span>
   );

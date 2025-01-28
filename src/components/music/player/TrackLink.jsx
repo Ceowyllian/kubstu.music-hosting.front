@@ -1,9 +1,10 @@
+import { usePlayerContext } from 'hooks/music';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function TrackLink({ children, ...props }) {
+function TrackLink({ ...props }) {
   const { className, ...otherProps } = props;
-
+  const { playerTrack } = usePlayerContext();
   return (
     <div
       style={{
@@ -12,9 +13,15 @@ function TrackLink({ children, ...props }) {
         overflow: 'hidden',
       }}
     >
-      <Link className={`${className} text-nowrap`} {...otherProps}>
-        {children}
-      </Link>
+      {playerTrack ? (
+        <Link className={`${className} text-nowrap`} {...otherProps}>
+          {playerTrack.title}
+        </Link>
+      ) : (
+        <span className={`${className} text-nowrap`} {...otherProps}>
+          Nothing is playing
+        </span>
+      )}
     </div>
   );
 }

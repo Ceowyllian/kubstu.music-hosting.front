@@ -42,9 +42,9 @@ function useAudio() {
   }, []);
 
   const setVolumeCallback = useCallback((volume) => {
-    const newVolume = volume >= 0 ? Math.min(volume, 1) : Math.max(volume, 0);
-    audioRef.current.volume = newVolume;
+    const newVolume = volume >= 0 ? Math.min(volume, 1) : 0;
     setVolume(newVolume);
+    audioRef.current.volume = volume;
   }, []);
 
   const setIsLoopCallback = useCallback((loop) => {
@@ -71,10 +71,6 @@ function useAudio() {
   useEffect(() => {
     const element = audioRef.current;
 
-    element.muted = isMuted;
-    element.loop = isLoop;
-    element.volume = volume;
-
     setIsSrcLoading(true);
 
     element.addEventListener('loadeddata', onLoadedData);
@@ -87,7 +83,7 @@ function useAudio() {
       element.removeEventListener('ended', onEnded);
       element.pause();
     };
-  }, [isLoop, isMuted, volume, onEnded]);
+  }, [onEnded]);
 
   const state = {
     isPlaying,
