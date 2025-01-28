@@ -1,9 +1,9 @@
 import {
-  TogglePlayButton,
   LoadTrackButton,
+  TogglePlayButton,
   TrackDuration,
   TrackProgressBar,
-} from 'components/music';
+} from 'components/music/player';
 import { usePlayerContext } from 'hooks/music';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
