@@ -10,6 +10,7 @@ import {
   REGISTRATION,
   SEARCH_RESULTS,
   UPLOAD_TRACK,
+  MY_PLAYLISTS,
 } from './routes';
 import {
   Home,
@@ -19,6 +20,7 @@ import {
   Registration,
   SearchResults,
   UploadTrack,
+  MyPlaylists,
 } from './pages';
 import RequireAuth from './RequireAuth';
 
@@ -63,6 +65,10 @@ const routes = [
       {
         path: MY_TRACKS,
         element: <MyTracks />,
+      },
+      {
+        path: MY_PLAYLISTS,
+        element: <MyPlaylists />,
       },
     ],
   },

@@ -5,3 +5,4 @@ export const ME = '/me';
 export const SEARCH_RESULTS = '/search';
 export const UPLOAD_TRACK = '/upload';
 export const MY_TRACKS = '/my-tracks';
+export const MY_PLAYLISTS = '/my-playlists';

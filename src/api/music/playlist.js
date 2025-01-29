@@ -28,17 +28,17 @@ export async function playlistDelete(id) {
 }
 
 export async function playlistTrackList(id) {
-  return await collectionTrackList('playlist', id);
+  return await collectionTrackList('playlists', id);
 }
 
 export async function playlistTrackCreate(id, body) {
-  return await collectionTrackCreate('playlist', id, body);
+  return await collectionTrackCreate('playlists', id, body);
 }
 
 export async function playlistTrackDelete(playlistId, trackId) {
-  return await collectionTrackDelete('playlist', playlistId, trackId);
+  return await collectionTrackDelete('playlists', playlistId, trackId);
 }
 
 export async function playlistTrackSwap(playlistId, body) {
-  return await collectionTrackSwap('playlist', playlistId, body);
+  return await collectionTrackSwap('playlists', playlistId, body);
 }
