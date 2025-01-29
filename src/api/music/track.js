@@ -1,8 +1,7 @@
 import axios from 'api';
 
-export async function trackList() {
-  // TODO add request params
-  return await axios.get(`api/music/tracks/`);
+export async function trackList(params) {
+  return await axios.get(`api/music/tracks/?${params}`);
 }
 
 export async function trackCreate(body) {
