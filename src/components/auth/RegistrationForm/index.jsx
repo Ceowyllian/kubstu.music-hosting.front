@@ -4,6 +4,7 @@ import React from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { createUser } from 'api/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { LOGIN } from 'router/routes';
 
 function RegistrationForm() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ function RegistrationForm() {
   const { isTouched, hasError, errorMessage, getTouchedValues, handleSubmit } =
     useForm(fields, async (e) => {
       await createUser(getTouchedValues());
-      navigate('/login');
+      navigate(LOGIN);
     });
 
   return (

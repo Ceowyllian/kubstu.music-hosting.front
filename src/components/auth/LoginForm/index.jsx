@@ -6,6 +6,7 @@ import { useForm, useInput } from 'hooks/forms';
 import React from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import { HOME } from 'router/routes';
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function LoginForm() {
       await login(getTouchedValues());
       const me = await meRetrieve();
       setUser(me.data);
-      navigate('/');
+      navigate(HOME);
     });
 
   return (
