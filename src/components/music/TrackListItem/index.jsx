@@ -4,6 +4,7 @@ import {
   TrackDuration,
   TrackProgressBar,
 } from 'components/music/player';
+import { AddTrackButton } from 'components/music/playlists';
 import { usePlayerContext } from 'hooks/music';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
@@ -37,6 +38,9 @@ function TrackListItem({ track }) {
             ) : (
               '0:0 / 0:00'
             )}
+          </Col>
+          <Col>
+            <AddTrackButton track={track} />
           </Col>
         </Row>
         <Row>{isPlaying(track) && <TrackProgressBar />}</Row>
